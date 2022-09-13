@@ -1,0 +1,66 @@
+{
+    "ct" : {
+        "audioChannelId" : "hw:1,0",
+        "socketPort" : 5000
+    },
+    "en" : {
+        "audioChannelId" : "hw:2,0",
+        "socketPort" : 5001
+    },
+    "de" : {
+        "audioChannelId" : "hw:3,0",
+        "socketPort" : 5002
+    },
+    "pt" : {
+        "audioChannelId" : "hw:4,0",
+        "socketPort" : 5003
+    },
+    "sv" : {
+        "audioChannelId" : "hw:5,0",
+        "socketPort" : 5004
+    },
+    "ru" : {
+        "audioChannelId" : "hw:6,0",
+        "socketPort" : 5005
+    },
+    "zh" : {
+        "audioChannelId" : "hw:7,0",
+        "socketPort" : 5006
+    },
+    "il" : {
+        "audioChannelId" : "hw:8,0",
+        "socketPort" : 5007
+    },
+    "es" : {
+        "audioChannelId" : "hw:9,0",
+        "socketPort" : 5008
+    },
+    "fr" : {
+        "audioChannelId" : "hw:10,0",
+        "socketPort" : 5009
+    },
+    "it" : {
+        "audioChannelId" : "hw:11,0",
+        "socketPort" : 5010
+    },
+    "nl" : {
+        "audioChannelId" : "hw:12,0",
+        "socketPort" : 5011
+    },
+    "dk" : {
+        "audioChannelId" : "hw:13,0",
+        "socketPort" : 5012
+    },
+    "ja" : {
+        "audioChannelId" : "hw:14,0",
+        "socketPort" : 5013
+    },
+    "sa" : {
+        "audioChannelId" : "hw:15,0",
+        "socketPort" : 5014
+    },
+    "tr" : {
+        "audioChannelId" : "hw:16,0",
+        "socketPort" : 5015
+    }
+}
