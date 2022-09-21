@@ -14,7 +14,8 @@ function jwt() {
             '/audio/play/es',
             '/audio/play/ct',
             '/audio/play/en',
-            '/audio/stop/es'
+            '/audio/stop/es',
+            '/audio/devices'
         ]
     });
 }

@@ -4,32 +4,16 @@ const audioService = require('./audio.service');
 
 // routes
 router.get('/play/:language', play);
-router.get('/stop/:language', stop);
+router.get('/devices', getDevices);
+
 
 module.exports = router;
 
-function play(req, res, next) {
-    audioService.play(req.params.language)
-        .then(stream => {
-            res.writeHead(200,{
-                "Content-Type": "audio/mpeg",
-                'Transfer-Encoding': 'chunked'
-            });
-            stream.pipe(res)
-        })
-        .catch(err => next(err));
+function play(req, res) {
+    audioService.getSocketPortForLanguage(req.params.language)
+    .then((socketPort) => res.json(socketPort));
 }
 
-function stop(req, res, next) {
-    audioService.stop(req.params.language)
-        .then(stream => {
-            return stream;
-            /*
-            res.writeHead(200, {
-                'Content-Type': 'audio/mpeg'
-                //'Content-Length': stat.size
-            });
-            stream.pipe(res)*/
-        })
-        .catch(err => next(err));
+function getDevices(req, res) {
+    audioService.getDevices().then((devices) => res.json(devices));
 }
