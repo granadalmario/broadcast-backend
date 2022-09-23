@@ -1,7 +1,6 @@
 const WebSocket = require('ws')
 const mic = require('mic');
 const decode = require('audio-decode');
-const buffer = require('audio-lena/ogg');
 module.exports = {
   openMicAndSendToSocket
 }
@@ -11,7 +10,7 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
   var micInstance = mic({
     rate: '16000',
     channels: '1',
-    debug: true,
+    debug: false,
     exitOnSilence: 6,
     device: audio_channel
   });
@@ -27,7 +26,9 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
     });
     micInputStream.on('data', function(data) {
       console.log("Recieved Input Stream: " + data.length);
-      decode(data).then(audioBuffer => {ws.send(audioBuffer);});
+      decode(data).then(audioBuffer => {
+        ws.send(audioBuffer);}
+      , err => { console.error("error: " + err) });
     });
     micInputStream.on('error', function(err) {
       console.log("Error in Input Stream: " + err);
