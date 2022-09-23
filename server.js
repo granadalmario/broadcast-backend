@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
+var channels = require('./audio/channels.json');
 var websocketController = require("./audio/websocket.controller");
 
 
@@ -29,4 +30,6 @@ const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
 
-websocketController.openMicAndSendToSocket("hw:2.0", 5000);
+for (const key in channels) {
+  websocketController.openMicAndSendToSocket(channels[key]["audioChannelId"], channels[key]["socketPort"]);
+} 
