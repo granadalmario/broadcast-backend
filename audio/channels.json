@@ -15,7 +15,7 @@
         "audioChannelId" : "hw:4,0",
         "socketPort" : 5003
     },
-    "sv" : {
+    "se" : {
         "audioChannelId" : "hw:5,0",
         "socketPort" : 5004
     },
@@ -47,7 +47,7 @@
         "audioChannelId" : "hw:12,0",
         "socketPort" : 5011
     },
-    "dk" : {
+    "no" : {
         "audioChannelId" : "hw:13,0",
         "socketPort" : 5012
     },
