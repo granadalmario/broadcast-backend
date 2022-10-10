@@ -52,7 +52,7 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
       console.log("Got SIGNAL startComplete");
       setTimeout(function() {
               micInstance.pause();
-      }, 1000);
+      }, 200);
   });
       
   micInputStream.on('stopComplete', function() {
@@ -71,7 +71,7 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
     console.log("Resume complete");
     setTimeout(function() {
           micInstance.pause();
-    }, 1000);
+    }, 200);
   });
   
   micInputStream.on('silence', function() {

@@ -1,5 +1,20 @@
-# node-mongo-registration-login-api
+## broadcast-backend
 
-NodeJS + MongoDB API for User Management, Authentication and Registration
+Pasos de instalación
 
-For documentation and instructions check out http://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management
+1. Abrir un terminal y ejecutar el siguiente comando:
+```
+sudo service mongod start
+```
+2. En el mismo terminal, clonar el repositorio:
+```
+git clone https://github.com/granadalmario/broadcast-backend.git
+```
+2. Entrar en la carpeta "broadcast-backend" e instalar las dependencias:
+```
+npm install
+```
+3. Ejecutar la aplicación:
+```
+npm run start
+```
