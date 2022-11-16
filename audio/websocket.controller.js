@@ -20,7 +20,8 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
     device: audio_channel
   });
   var micInputStream = micInstance.getAudioStream();
-  var startDate = new Date();
+  var initialTime = new Date();
+  const SECONDS_BETWEEN_STREAMS = 2000
   
   const wss = new WebSocket.Server({ port: socket_port })
   wss.on('listening', ws => {
@@ -42,7 +43,14 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
     if (firstStream == undefined){
       firstStream = data;
     }
-    arrayBuffer = _appendBuffer(arrayBuffer, data);      
+    arrayBuffer = _appendBuffer(arrayBuffer, data);    
+    if (new Date() - initialTime >= SECONDS_BETWEEN_STREAMS) {
+      if (sockets.length >  0){
+        sockets.forEach((item, index) => item.send(arrayBuffer));
+      }
+      arrayBuffer = firstStream;
+      initialTime = new Date();
+    }  
   });
   micInputStream.on('error', function(err) {
     console.log("Error in Input Stream: " + err);
@@ -50,9 +58,6 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
 
   micInputStream.on('startComplete', function() {
       console.log("Got SIGNAL startComplete");
-      setTimeout(function() {
-              micInstance.pause();
-      }, 200);
   });
       
   micInputStream.on('stopComplete', function() {
@@ -60,18 +65,10 @@ async function openMicAndSendToSocket(audio_channel, socket_port) {
   });
       
   micInputStream.on('pauseComplete', function() {
-    if (sockets.length >  0){
-      sockets.forEach((item, index) => item.send(arrayBuffer));
-    }
-    arrayBuffer = firstStream;
-    micInstance.resume();
   });
   
   micInputStream.on('resumeComplete', function() {
     console.log("Resume complete");
-    setTimeout(function() {
-          micInstance.pause();
-    }, 200);
   });
   
   micInputStream.on('silence', function() {
